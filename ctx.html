@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        
+        @keyframes sport {
+            0% {transform: rotate(0deg)}
+            100% {transform: rotate(360deg)}
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="background-color: #ccc; margin: 300px 300px;">
+    </canvas>
+</body>
+<script type="text/javascript">
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var q = 0;
+
+    function can() {
+        // 清除绘图
+        ctx.clearRect(0,0,600,400);
+
+        ctx.save();
+        ctx.translate(300,200);  //  中心点
+        q += Math.PI / 6;
+        ctx.rotate(q);
+
+        // 绘制左边的圆
+
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(0, 0, 150, 1.5 * Math.PI, Math.PI / 2, false);
+        ctx.closePath();
+        ctx.fill();
+
+        // 绘制右侧的黑圆
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(0, 0, 150, Math.PI / 2, 1.5 * Math.PI, false);
+        ctx.closePath();
+        ctx.fill();
+
+        // 黑圆
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(0, 75, 75, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+
+        // 白圆
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(0, -75, 75, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+
+        // 小白圆
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(0, 105, 15, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+
+        // 小黑圆
+        ctx.fillStyle = '#000';
+        ctx.beginPath();
+        ctx.arc(0, 0-75, 15, 0, Math.PI * 2, false);
+        ctx.closePath();
+        ctx.fill();
+
+
+        ctx.restore();
+    }
+
+    function initTaiji()
+    {
+        can();
+        setInterval(can,50);
+    }
+    initTaiji();
+
+</script>
+
+</html>
